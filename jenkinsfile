@@ -24,18 +24,11 @@ pipeline {
             }
 
             post {
-                always {
-                    allure([
-                        results: [[path: 'target/allure-results']] 
-                    ])
-                }
-            }
-        }
-    }
-
-    post {
-        always {
-            sh 'docker compose down || true'
+                 always {
+                     allure([
+                        results: [[path: 'target/allure-results']]
+                 ])
+                sh 'docker compose down || true'
         }
     }
 }
