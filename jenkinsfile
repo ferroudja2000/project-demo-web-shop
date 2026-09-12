@@ -22,7 +22,7 @@ pipeline {
             }
 
             steps {
-                sh 'mvn clean test'
+                sh 'mvn -f demo/pom.xml clean test'
             }
 
             post {
