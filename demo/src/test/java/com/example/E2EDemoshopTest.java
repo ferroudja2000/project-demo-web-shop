@@ -52,7 +52,7 @@ public class E2EDemoshopTest {
             URL gridUrl = null;
 
          try {
-        gridUrl = new URL("http://127.0.0.1:4444");
+        gridUrl = new URL("http://selenium-hub:4444");
          } catch (MalformedURLException e) {
         e.printStackTrace();
         }
