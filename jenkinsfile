@@ -5,6 +5,7 @@ pipeline {
 
         stage('Start Selenium') {
             steps {
+                sh 'docker compose down --remove-orphans || true'
                 sh 'docker compose up -d'
                 sh 'docker compose ps'
             }
