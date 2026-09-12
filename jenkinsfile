@@ -20,19 +20,24 @@ pipeline {
                     reuseNode true
                 }
             }
-
             steps {
                 sh 'mvn -f demo/pom.xml clean test'
             }
+        }
 
-            post {
-                always {
-                    allure([
-                        results: [[path: 'target/allure-results']]
-                    ])
-                    sh 'docker compose down || true'
-                }
+        stage('Report') {
+            steps {
+                allure([
+                    results: [[path: 'demo/target/allure-results']]
+                ])
             }
         }
-    }
-}
+
+        stage('Cleanup') {
+            steps {
+                sh 'docker compose down || true'
+            }
+        }
+
+    } 
+} 
